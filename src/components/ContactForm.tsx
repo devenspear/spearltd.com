@@ -1,0 +1,175 @@
+'use client';
+
+import React, { useState } from 'react';
+
+interface ContactFormProps {
+  details: {
+    heading: string;
+    phone: {
+      label: string;
+      number: string;
+      url: string;
+    };
+    email: {
+      label: string;
+      address: string;
+      url: string;
+    };
+    service_area_heading: string;
+    service_area_text: string;
+  };
+}
+
+export default function ContactForm({ details }: ContactFormProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    }, 1500);
+  };
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+      <div className="bg-white p-8 rounded-xl shadow-lg">
+        <h3 className="text-2xl font-bold text-green-800 mb-6">Send Us a Message</h3>
+        
+        {isSubmitted ? (
+          <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded-lg">
+            <h4 className="text-xl font-bold mb-2">Thank you for your message!</h4>
+            <p>We have received your inquiry and will get back to you as soon as possible.</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Phone</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={5}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              ></textarea>
+            </div>
+            
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full bg-green-800 text-white py-3 px-6 rounded-lg font-bold text-lg hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+            >
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                'Send Message'
+              )}
+            </button>
+          </form>
+        )}
+      </div>
+      
+      <div>
+        <h3 className="text-2xl font-bold text-green-800 mb-6">{details.heading}</h3>
+        
+        <div className="space-y-8">
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">{details.phone.label}</h4>
+            <a href={details.phone.url} className="text-xl text-green-700 hover:text-green-800 transition-colors font-medium flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              {details.phone.number}
+            </a>
+          </div>
+          
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">{details.email.label}</h4>
+            <a href={details.email.url} className="text-xl text-green-700 hover:text-green-800 transition-colors font-medium flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              {details.email.address}
+            </a>
+          </div>
+          
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">{details.service_area_heading}</h4>
+            <div className="text-gray-700" dangerouslySetInnerHTML={{ __html: details.service_area_text }}></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

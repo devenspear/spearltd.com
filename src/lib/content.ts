@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 
 // Add a comment to indicate this file contains server-only code
 // This ensures the file is only used in server components
-// @ts-ignore
+// @ts-expect-error
 // @next-internal
 
 // Define TypeScript interfaces for content data

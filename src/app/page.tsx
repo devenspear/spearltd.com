@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { getHomeContent } from "@/lib/contentUtils";
+import type { ServiceItem } from "@/lib/contentUtils";
 
 export default async function Home() {
   const { hero, about, services, cta } = await getHomeContent();
@@ -141,7 +141,7 @@ export default async function Home() {
           {services.subheading}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.services.map((service: any, index: number) => (
+          {services.services.map((service, index: number) => (
             <div key={index} className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-t-4 border-${service.color} transform hover:-translate-y-2 transition-transform duration-300`}>
               <div className={`w-16 h-16 bg-${service.color.replace('800', '100').replace('600', '50')} rounded-full flex items-center justify-center mx-auto mb-6`}>
                 {service.icon === 'document' && (
