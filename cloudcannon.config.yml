@@ -22,9 +22,7 @@ collections_config:
     schema:
       path: schemas/article.md
   home_hero:
-    path: src/content/home
-    filter:
-      _schema: home_hero
+    path: src/content/home/hero
     output: false
     icon: home
     _enabled_editors:
@@ -33,9 +31,7 @@ collections_config:
     schema:
       path: schemas/home_hero.md
   home_about:
-    path: src/content/home
-    filter:
-      _schema: home_about
+    path: src/content/home/about
     output: false
     icon: home
     _enabled_editors:
@@ -44,9 +40,7 @@ collections_config:
     schema:
       path: schemas/home_about.md
   home_services:
-    path: src/content/home
-    filter:
-      _schema: home_services
+    path: src/content/home/services
     output: false
     icon: home
     _enabled_editors:
@@ -55,9 +49,7 @@ collections_config:
     schema:
       path: schemas/home_services.md
   home_cta:
-    path: src/content/home
-    filter:
-      _schema: home_cta
+    path: src/content/home/cta
     output: false
     icon: home
     _enabled_editors:
@@ -66,9 +58,7 @@ collections_config:
     schema:
       path: schemas/home_cta.md
   about_intro:
-    path: src/content/about
-    filter:
-      _schema: about_intro
+    path: src/content/about/intro
     output: false
     icon: info
     _enabled_editors:
@@ -77,9 +67,7 @@ collections_config:
     schema:
       path: schemas/about_intro.md
   about_main:
-    path: src/content/about
-    filter:
-      _schema: about_main
+    path: src/content/about/main
     output: false
     icon: info
     _enabled_editors:
@@ -88,9 +76,7 @@ collections_config:
     schema:
       path: schemas/about_main.md
   process_intro:
-    path: src/content/process
-    filter:
-      _schema: process_intro
+    path: src/content/process/intro
     output: false
     icon: assignment
     _enabled_editors:
@@ -99,9 +85,7 @@ collections_config:
     schema:
       path: schemas/process_intro.md
   process_funding:
-    path: src/content/process
-    filter:
-      _schema: process_funding
+    path: src/content/process/funding
     output: false
     icon: assignment
     _enabled_editors:
@@ -110,9 +94,7 @@ collections_config:
     schema:
       path: schemas/process_funding.md
   process_timeline:
-    path: src/content/process
-    filter:
-      _schema: process_timeline
+    path: src/content/process/timeline
     output: false
     icon: assignment
     _enabled_editors:
@@ -121,9 +103,7 @@ collections_config:
     schema:
       path: schemas/process_timeline.md
   projects_intro:
-    path: src/content/projects
-    filter:
-      _schema: projects_intro
+    path: src/content/projects/intro
     output: false
     icon: work
     _enabled_editors:
@@ -132,9 +112,7 @@ collections_config:
     schema:
       path: schemas/projects_intro.md
   projects_recent:
-    path: src/content/projects
-    filter:
-      _schema: projects_recent
+    path: src/content/projects/recent
     output: false
     icon: work
     _enabled_editors:
@@ -143,9 +121,7 @@ collections_config:
     schema:
       path: schemas/projects_recent.md
   contact_intro:
-    path: src/content/contact
-    filter:
-      _schema: contact_intro
+    path: src/content/contact/intro
     output: false
     icon: contact_mail
     _enabled_editors:
@@ -154,9 +130,7 @@ collections_config:
     schema:
       path: schemas/contact_intro.md
   contact_details:
-    path: src/content/contact
-    filter:
-      _schema: contact_details
+    path: src/content/contact/details
     output: false
     icon: contact_mail
     _enabled_editors:
