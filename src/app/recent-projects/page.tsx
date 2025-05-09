@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { getProjectsContent } from '@/lib/content';
+import { getProjectsContent } from '@/lib/contentUtils';
 
-export default function RecentProjectsPage() {
-  const { intro, recent } = getProjectsContent();
+export default async function RecentProjectsPage() {
+  const { intro, recent } = await getProjectsContent();
   
   return (
     <div className="container mx-auto px-4 py-12">

@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { getContactContent } from '@/lib/content';
+import { getContactContent } from '@/lib/contentUtils';
 
-export default function ContactPage() {
-  const { intro, details } = getContactContent();
+export default async function ContactPage() {
+  const { intro, details } = await getContactContent();
   
   const [formData, setFormData] = useState({
     name: '',

@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { getAboutContent } from '@/lib/content';
+import { getAboutContent } from '@/lib/contentUtils';
 
-export default function AboutPage() {
-  const { intro, main } = getAboutContent();
+export default async function AboutPage() {
+  const { intro, main } = await getAboutContent();
   
   return (
     <div className="container mx-auto px-4 py-12">

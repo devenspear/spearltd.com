@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getHomeContent } from "@/lib/content";
+import { getHomeContent } from "@/lib/contentUtils";
 
-export default function Home() {
-  const { hero, about, services, cta } = getHomeContent();
+export default async function Home() {
+  const { hero, about, services, cta } = await getHomeContent();
   
   return (
     <div className="container mx-auto px-4">
@@ -93,8 +93,8 @@ export default function Home() {
                   <div>
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">{about.heading}</h2>
                     <div className="text-lg text-gray-700 mb-8 leading-relaxed">
-                      {about.text.split('\n\n').map((paragraph, idx) => (
-                        <p key={idx} className="mb-4">{paragraph}</p>
+                      {about.text.split('\n\n').map((paragraph: string, idx: number) => (
+                        <p key={idx} className="text-gray-700 mb-6 leading-relaxed">{paragraph}</p>
                       ))}
                     </div>
                     <div className="inline-block">
@@ -141,7 +141,7 @@ export default function Home() {
           {services.subheading}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.services.map((service, index) => (
+          {services.services.map((service: any, index: number) => (
             <div key={index} className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-t-4 border-${service.color} transform hover:-translate-y-2 transition-transform duration-300`}>
               <div className={`w-16 h-16 bg-${service.color.replace('800', '100').replace('600', '50')} rounded-full flex items-center justify-center mx-auto mb-6`}>
                 {service.icon === 'document' && (

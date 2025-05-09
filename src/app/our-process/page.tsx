@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { getProcessContent } from '@/lib/content';
+import { getProcessContent } from '@/lib/contentUtils';
 
-export default function OurProcessPage() {
-  const { intro, funding, timeline } = getProcessContent();
+export default async function OurProcessPage() {
+  const { intro, funding, timeline } = await getProcessContent();
   
   return (
     <div className="container mx-auto px-4 py-12">

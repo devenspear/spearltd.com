@@ -1,14 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-
-// Add a comment to indicate this file contains server-only code
-// This ensures the file is only used in server components
-// @ts-ignore
-// @next-internal
+import { cache } from 'react';
 
 // Define TypeScript interfaces for content data
-interface HeroContent {
+export interface HeroContent {
   _schema: string;
   heading: string;
   subheading: string;
@@ -20,7 +16,7 @@ interface HeroContent {
   content?: string;
 }
 
-interface AboutContent {
+export interface AboutContent {
   _schema: string;
   heading: string;
   text: string;
@@ -30,7 +26,7 @@ interface AboutContent {
   content?: string;
 }
 
-interface ServiceItem {
+export interface ServiceItem {
   title: string;
   description: string;
   icon: string;
@@ -39,7 +35,7 @@ interface ServiceItem {
   color: string;
 }
 
-interface ServicesContent {
+export interface ServicesContent {
   _schema: string;
   heading: string;
   subheading: string;
@@ -47,7 +43,7 @@ interface ServicesContent {
   content?: string;
 }
 
-interface CtaContent {
+export interface CtaContent {
   _schema: string;
   heading: string;
   text: string;
@@ -59,14 +55,14 @@ interface CtaContent {
   content?: string;
 }
 
-interface HomeContent {
+export interface HomeContent {
   hero: HeroContent;
   about: AboutContent;
   services: ServicesContent;
   cta: CtaContent;
 }
 
-interface AboutPageContent {
+export interface AboutPageContent {
   intro: {
     _schema: string;
     heading: string;
@@ -85,7 +81,7 @@ interface AboutPageContent {
   };
 }
 
-interface ProcessPageContent {
+export interface ProcessPageContent {
   intro: {
     _schema: string;
     heading: string;
@@ -110,12 +106,12 @@ interface ProcessPageContent {
   };
 }
 
-interface ProjectItem {
+export interface ProjectItem {
   name: string;
   location: string;
 }
 
-interface ProjectsPageContent {
+export interface ProjectsPageContent {
   intro: {
     _schema: string;
     heading: string;
@@ -133,7 +129,7 @@ interface ProjectsPageContent {
   };
 }
 
-interface ContactPageContent {
+export interface ContactPageContent {
   intro: {
     _schema: string;
     heading: string;
@@ -189,8 +185,8 @@ export function getAllContentFiles(directory: string) {
   });
 }
 
-// Function to get home page content
-export function getHomeContent(): HomeContent {
+// Use React's cache to optimize content loading
+export const getHomeContent = cache((): HomeContent => {
   const heroContent = getContentData<HeroContent>('src/content/home/hero/hero.md');
   const aboutContent = getContentData<AboutContent>('src/content/home/about/about.md');
   const servicesContent = getContentData<ServicesContent>('src/content/home/services/services.md');
@@ -202,10 +198,9 @@ export function getHomeContent(): HomeContent {
     services: servicesContent,
     cta: ctaContent
   };
-}
+});
 
-// Function to get about page content
-export function getAboutContent(): AboutPageContent {
+export const getAboutContent = cache((): AboutPageContent => {
   const introContent = getContentData<AboutPageContent['intro']>('src/content/about/intro/intro.md');
   const mainContent = getContentData<AboutPageContent['main']>('src/content/about/main/main.md');
   
@@ -213,10 +208,9 @@ export function getAboutContent(): AboutPageContent {
     intro: introContent,
     main: mainContent
   };
-}
+});
 
-// Function to get process page content
-export function getProcessContent(): ProcessPageContent {
+export const getProcessContent = cache((): ProcessPageContent => {
   const introContent = getContentData<ProcessPageContent['intro']>('src/content/process/intro/intro.md');
   const fundingContent = getContentData<ProcessPageContent['funding']>('src/content/process/funding/funding.md');
   const timelineContent = getContentData<ProcessPageContent['timeline']>('src/content/process/timeline/timeline.md');
@@ -226,10 +220,9 @@ export function getProcessContent(): ProcessPageContent {
     funding: fundingContent,
     timeline: timelineContent
   };
-}
+});
 
-// Function to get projects page content
-export function getProjectsContent(): ProjectsPageContent {
+export const getProjectsContent = cache((): ProjectsPageContent => {
   const introContent = getContentData<ProjectsPageContent['intro']>('src/content/projects/intro/intro.md');
   const recentContent = getContentData<ProjectsPageContent['recent']>('src/content/projects/recent/recent.md');
   
@@ -237,10 +230,9 @@ export function getProjectsContent(): ProjectsPageContent {
     intro: introContent,
     recent: recentContent
   };
-}
+});
 
-// Function to get contact page content
-export function getContactContent(): ContactPageContent {
+export const getContactContent = cache((): ContactPageContent => {
   const introContent = getContentData<ContactPageContent['intro']>('src/content/contact/intro/intro.md');
   const detailsContent = getContentData<ContactPageContent['details']>('src/content/contact/details/details.md');
   
@@ -248,4 +240,4 @@ export function getContactContent(): ContactPageContent {
     intro: introContent,
     details: detailsContent
   };
-}
+});
