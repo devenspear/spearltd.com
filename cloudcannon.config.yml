@@ -279,3 +279,12 @@ _editables:
     undo: true
     redo: true
     styles: /src/styles/editor.css
+
+source: /
+paths:
+  static: ''
+  uploads: uploads
+timezone: America/New_York
+markdown:
+  engine: commonmark
+  options: {}
