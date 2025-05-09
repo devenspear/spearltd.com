@@ -1,103 +1,222 @@
 import Image from "next/image";
+import Link from "next/link";
+import { getHomeContent } from "@/lib/content";
 
 export default function Home() {
+  const { hero, about, services, cta } = getHomeContent();
+  
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="container mx-auto px-4">
+      {/* Hero Section with Background */}
+      <div className="relative h-[500px] flex items-center justify-center mb-20 overflow-hidden rounded-xl shadow-2xl">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-green-800 to-blue-900 opacity-90"></div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto px-4">
+          <div className="relative z-10">
+            <div className="inline-block px-4 py-1 bg-white text-green-800 rounded-full text-sm font-medium mb-6">
+              {hero.badge_text}
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              {hero.heading}
+            </h1>
+            <p className="text-xl text-white text-opacity-90 mb-8 leading-relaxed">
+              {hero.subheading}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                href={hero.primary_button_url} 
+                className="bg-green-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center"
+              >
+                <span>{hero.primary_button_text}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Link>
+              <Link 
+                href={hero.secondary_button_url} 
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-800 hover:border-green-800 hover:text-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center"
+              >
+                <span>{hero.secondary_button_text}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-tr from-green-100 to-blue-100 rounded-2xl blur-lg opacity-60"></div>
+            <div className="relative bg-white p-2 rounded-2xl shadow-2xl">
+              <div className="aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-green-800/10 to-blue-900/10 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-green-800 text-opacity-20 text-9xl font-serif font-bold mb-4">SC</div>
+                  <div className="text-green-800 text-opacity-70 text-xl font-medium">Spear Consultants</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Decorative elements */}
+            <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-green-200 rounded-full opacity-70"></div>
+            <div className="absolute -top-6 -left-6 w-16 h-16 bg-blue-200 rounded-full opacity-70"></div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div className="relative py-16 mb-20">
+        {/* Background with subtle pattern */}
+        <div className="absolute inset-0 bg-gray-50 z-0">
+          <div className="absolute inset-0 opacity-5" 
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23000000' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+            }}>
+          </div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto px-4">
+          <div className="order-2 md:order-1">
+            <div className="bg-white p-1 rounded-xl shadow-xl">
+              <div className="relative h-80 md:h-96 rounded-lg overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-800/20 to-blue-900/20 flex items-center justify-center">
+                  <div className="text-green-800 text-opacity-30 text-9xl font-serif font-bold">SC</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="order-1 md:order-2">
+            {/* About Section */}
+            <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-lg mb-20">
+              <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">{about.heading}</h2>
+                    <div className="text-lg text-gray-700 mb-8 leading-relaxed">
+                      {about.text.split('\n\n').map((paragraph, idx) => (
+                        <p key={idx} className="mb-4">{paragraph}</p>
+                      ))}
+                    </div>
+                    <div className="inline-block">
+                      <Link 
+                        href={about.button_url} 
+                        className="bg-green-800 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 inline-flex items-center"
+                      >
+                        <span>{about.button_text}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <div className="relative">
+                    <div className="absolute -inset-2 bg-gradient-to-br from-green-100 to-blue-100 rounded-xl blur-md opacity-70"></div>
+                    <div className="relative bg-white p-8 rounded-xl border border-gray-200 shadow-xl">
+                      <div className="text-4xl font-bold text-green-800 mb-4">50+ Years</div>
+                      <div className="text-xl text-gray-700 mb-6">{about.highlight}</div>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-medium">Proven Track Record</div>
+                          <div className="text-sm text-gray-500">Hundreds of successful projects</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center mb-20">
+        <h2 className="text-4xl font-bold text-green-800 mb-4">{services.heading}</h2>
+        <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+          {services.subheading}
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.services.map((service, index) => (
+            <div key={index} className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-t-4 border-${service.color} transform hover:-translate-y-2 transition-transform duration-300`}>
+              <div className={`w-16 h-16 bg-${service.color.replace('800', '100').replace('600', '50')} rounded-full flex items-center justify-center mx-auto mb-6`}>
+                {service.icon === 'document' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-8 w-8 text-${service.color}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                )}
+                {service.icon === 'money' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-8 w-8 text-${service.color}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
+                {service.icon === 'consultation' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-8 w-8 text-${service.color}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                )}
+              </div>
+              <h3 className="text-2xl font-bold text-blue-900 mb-4">{service.title}</h3>
+              <p className="text-gray-600 mb-6">
+                {service.description}
+              </p>
+              <Link 
+                href={service.button_url} 
+                className={`inline-flex items-center text-${service.color} font-medium hover:text-${service.color.replace('800', '700').replace('600', '500')}`}
+              >
+                <span>{service.button_text}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative overflow-hidden rounded-2xl mb-20">
+        {/* Background with pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-800 to-blue-900 z-0">
+          <div className="absolute inset-0 opacity-10" 
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '20px 20px'
+            }}>
+          </div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 text-white p-16 text-center">
+          <h2 className="text-4xl font-bold mb-6">{cta.heading}</h2>
+          <p className="text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
+            {cta.text}
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link 
+              href={cta.primary_button_url} 
+              className="bg-white text-green-800 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center"
+            >
+              <span>{cta.primary_button_text}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+            <a 
+              href={cta.secondary_button_url} 
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              <span>{cta.secondary_button_text}</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

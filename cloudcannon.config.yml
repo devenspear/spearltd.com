@@ -1,0 +1,281 @@
+collections_config:
+  pages:
+    path: src/content/pages
+    output: true
+    url: /[slug]
+    icon: article
+    _enabled_editors:
+      - visual
+      - content
+      - source
+    schema:
+      path: schemas/page.md
+  articles:
+    path: src/content/articles
+    output: true
+    url: /articles/[slug]
+    icon: post_add
+    _enabled_editors:
+      - visual
+      - content
+      - source
+    schema:
+      path: schemas/article.md
+  home_hero:
+    path: src/content/home
+    filter:
+      _schema: home_hero
+    output: false
+    icon: home
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/home_hero.md
+  home_about:
+    path: src/content/home
+    filter:
+      _schema: home_about
+    output: false
+    icon: home
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/home_about.md
+  home_services:
+    path: src/content/home
+    filter:
+      _schema: home_services
+    output: false
+    icon: home
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/home_services.md
+  home_cta:
+    path: src/content/home
+    filter:
+      _schema: home_cta
+    output: false
+    icon: home
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/home_cta.md
+  about_intro:
+    path: src/content/about
+    filter:
+      _schema: about_intro
+    output: false
+    icon: info
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/about_intro.md
+  about_main:
+    path: src/content/about
+    filter:
+      _schema: about_main
+    output: false
+    icon: info
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/about_main.md
+  process_intro:
+    path: src/content/process
+    filter:
+      _schema: process_intro
+    output: false
+    icon: assignment
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/process_intro.md
+  process_funding:
+    path: src/content/process
+    filter:
+      _schema: process_funding
+    output: false
+    icon: assignment
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/process_funding.md
+  process_timeline:
+    path: src/content/process
+    filter:
+      _schema: process_timeline
+    output: false
+    icon: assignment
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/process_timeline.md
+  projects_intro:
+    path: src/content/projects
+    filter:
+      _schema: projects_intro
+    output: false
+    icon: work
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/projects_intro.md
+  projects_recent:
+    path: src/content/projects
+    filter:
+      _schema: projects_recent
+    output: false
+    icon: work
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/projects_recent.md
+  contact_intro:
+    path: src/content/contact
+    filter:
+      _schema: contact_intro
+    output: false
+    icon: contact_mail
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/contact_intro.md
+  contact_details:
+    path: src/content/contact
+    filter:
+      _schema: contact_details
+    output: false
+    icon: contact_mail
+    _enabled_editors:
+      - content
+      - source
+    schema:
+      path: schemas/contact_details.md
+
+_inputs:
+  title:
+    type: text
+    label: Page Title
+  description:
+    type: textarea
+    label: Meta Description
+  content:
+    type: markdown
+    label: Page Content
+  date:
+    type: date
+    label: Publish Date
+  author:
+    type: text
+    label: Author
+  featured_image:
+    type: image
+    label: Featured Image
+  heading:
+    type: text
+    label: Heading
+  subheading:
+    type: text
+    label: Subheading
+  text:
+    type: markdown
+    label: Text Content
+  button_text:
+    type: text
+    label: Button Text
+  button_url:
+    type: text
+    label: Button URL
+  quote:
+    type: text
+    label: Quote Text
+  image:
+    type: image
+    label: Section Image
+  items:
+    type: array
+    label: List Items
+    structures:
+      - label: Project Item
+        values:
+          - name: title
+            type: text
+            label: Title
+          - name: location
+            type: text
+            label: Location
+          - name: year
+            type: text
+            label: Year
+      - label: Process Step
+        values:
+          - name: step_number
+            type: number
+            label: Step Number
+          - name: title
+            type: text
+            label: Step Title
+          - name: description
+            type: markdown
+            label: Step Description
+    type: image
+    label: Featured Image
+
+_select_data:
+  authors:
+    - Spear Consultants
+    - Deven Spear
+
+_structures:
+  content_blocks:
+    style: modal
+    values:
+      - label: Text Block
+        value:
+          _type: text_block
+          content: ""
+      - label: Image Block
+        value:
+          _type: image_block
+          image: ""
+          caption: ""
+      - label: Call to Action
+        value:
+          _type: cta_block
+          heading: ""
+          text: ""
+          button_text: ""
+          button_link: ""
+
+_editables:
+  text:
+    italic: true
+    bold: true
+    link: true
+    removeformat: true
+    blockquote: true
+    underline: true
+    strikethrough: true
+    code: true
+    bulletedlist: true
+    numberedlist: true
+    image: true
+    embed: true
+    horizontalrule: true
+    table: true
+    undo: true
+    redo: true
+    styles: /src/styles/editor.css
