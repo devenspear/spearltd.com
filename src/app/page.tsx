@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <div className="container mx-auto px-4">
       {/* Hero Section with Background */}
-      <div className="relative h-[500px] flex items-center justify-center mb-20 overflow-hidden rounded-xl shadow-2xl">
+      <div className="relative h-[550px] flex items-center justify-center mb-20 overflow-hidden rounded-xl shadow-2xl">
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-green-800 to-blue-900 opacity-90"></div>
         
@@ -18,7 +18,7 @@ export default async function Home() {
             <div className="inline-block px-4 py-1 bg-white text-green-800 rounded-full text-sm font-medium mb-6">
               {hero.badge_text}
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               {hero.heading}
             </h1>
             <p className="text-xl text-white text-opacity-90 mb-8 leading-relaxed">
@@ -55,7 +55,7 @@ export default async function Home() {
                   "/images/Slider2.png",
                   "/images/Slider3.png"
                 ]}
-                className="aspect-[4/3] rounded-xl overflow-hidden"
+                className="aspect-[4/3] rounded-xl overflow-hidden w-full h-auto"
               />
             </div>
             
@@ -123,7 +123,7 @@ export default async function Home() {
         
         {/* Content */}
         <div className="relative z-10 text-white p-16 text-center">
-          <h2 className="text-4xl font-bold mb-6">{cta.heading}</h2>
+          <h2 className="text-4xl font-bold mb-6 text-white">{cta.heading}</h2>
           <p className="text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
             {cta.text}
           </p>
