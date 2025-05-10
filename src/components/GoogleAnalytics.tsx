@@ -12,7 +12,7 @@ export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps)
     if (measurementId && typeof window !== 'undefined') {
       // Initialize GA4 dataLayer
       window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]) {
+      function gtag(...args: unknown[]) {
         window.dataLayer.push(args);
       }
       gtag('js', new Date());
@@ -53,7 +53,7 @@ export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps)
 // Add this to global types
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
 }
