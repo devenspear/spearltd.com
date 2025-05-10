@@ -1,12 +1,13 @@
 ---
 title: Contact Us
-description: Get in touch with Spear Consultants for information about public funding and evaluations.
+description: >-
+  Get in touch with Spear Consultants for information about public funding and
+  evaluations.
 featured_image: /images/contact-hero.jpg
 ---
-
 # Contact Us
 
-Spear Consultants has completed projects all across the USA. For more information call: (919) 417-5192
+Spear Consultants has completed projects all across the USA. For more information please contact us in the form below.
 
 ## Send Us a Message
 
