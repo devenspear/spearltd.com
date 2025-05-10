@@ -12,12 +12,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-serif font-bold text-white mb-4">Spear Consultants</h3>
             <p className="text-gray-300 mb-4">Experts in public funding and evaluations since 1972.</p>
-            <div className="flex items-center mb-2">
-              <FiMessageSquare className="mr-2 text-accent" />
-              <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
-                Contact Us
-              </Link>
-            </div>
+
             <div className="flex items-center mb-2">
               <FiMail className="mr-2 text-accent" />
               <a href="mailto:info@spearltd.com" className="text-gray-300 hover:text-white transition-colors">

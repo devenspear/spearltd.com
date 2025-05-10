@@ -3,7 +3,7 @@ _schema: contact_details
 heading: Contact Information
 phone:
   label: Contact Us
-  number: Contact Form
+  number: 
   url: #contact-form
 email:
   label: Email Us

@@ -72,13 +72,6 @@ const Header = () => {
             <FiMessageSquare className="mr-2" />
             Contact Us
           </Link>
-          <Link 
-            href="mailto:info@spearltd.com" 
-            className="flex items-center text-sm font-medium text-green-700 border border-green-700 px-4 py-2 rounded hover:bg-green-50 transition-colors"
-          >
-            <FiMail className="mr-2" />
-            Email Us
-          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -115,17 +108,10 @@ const Header = () => {
               ))}
               <Link 
                 href="/contact" 
-                className="flex items-center justify-center text-base font-medium text-white bg-primary px-4 py-2 rounded hover:bg-primary-light transition-colors mb-2"
+                className="flex items-center justify-center text-base font-medium text-white bg-primary px-4 py-2 rounded hover:bg-primary-light transition-colors"
               >
                 <FiMessageSquare className="mr-2" />
                 Contact Us
-              </Link>
-              <Link 
-                href="mailto:info@spearltd.com" 
-                className="flex items-center justify-center text-base font-medium text-green-700 border border-green-700 px-4 py-2 rounded hover:bg-green-50 transition-colors"
-              >
-                <FiMail className="mr-2" />
-                Email Us
               </Link>
             </div>
           </motion.div>

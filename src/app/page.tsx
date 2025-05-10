@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getHomeContent } from "@/lib/contentUtils";
+import ImageSlider from "@/components/ImageSlider";
 
 export default async function Home() {
   const { hero, about, services, cta } = await getHomeContent();
@@ -47,12 +49,14 @@ export default async function Home() {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-tr from-green-100 to-blue-100 rounded-2xl blur-lg opacity-60"></div>
             <div className="relative bg-white p-2 rounded-2xl shadow-2xl">
-              <div className="aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-green-800/10 to-blue-900/10 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-green-800 text-opacity-20 text-9xl font-serif font-bold mb-4">SC</div>
-                  <div className="text-green-800 text-opacity-70 text-xl font-medium">Spear Consultants</div>
-                </div>
-              </div>
+              <ImageSlider 
+                images={[
+                  "/images/Slider1.png",
+                  "/images/Slider2.png",
+                  "/images/Slider3.png"
+                ]}
+                className="aspect-[4/3] rounded-xl overflow-hidden"
+              />
             </div>
             
             {/* Decorative elements */}
@@ -77,9 +81,15 @@ export default async function Home() {
           <div className="order-2 md:order-1">
             <div className="bg-white p-1 rounded-xl shadow-xl">
               <div className="relative h-80 md:h-96 rounded-lg overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-800/20 to-blue-900/20 flex items-center justify-center">
-                  <div className="text-green-800 text-opacity-30 text-9xl font-serif font-bold">SC</div>
-                </div>
+                <ImageSlider 
+                  images={[
+                    "/images/Slider2.png",
+                    "/images/Slider3.png",
+                    "/images/Slider1.png"
+                  ]}
+                  interval={6000}
+                  className="h-full"
+                />
               </div>
             </div>
           </div>
@@ -136,9 +146,20 @@ export default async function Home() {
 
       <div className="text-center mb-20">
         <h2 className="text-4xl font-bold text-green-800 mb-4">{services.heading}</h2>
-        <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
           {services.subheading}
         </p>
+        <div className="flex justify-center items-center mb-8">
+          <div className="relative w-40 h-28 mx-auto">
+            <Image 
+              src="/images/usdalogo.png" 
+              alt="USDA Logo" 
+              fill
+              style={{ objectFit: 'contain' }}
+              className="mx-auto"
+            />
+          </div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.services.map((service, index: number) => (
             <div key={index} className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-t-4 border-${service.color} transform hover:-translate-y-2 transition-transform duration-300`}>
