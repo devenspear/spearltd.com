@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 interface ContactFormProps {
   details: {
@@ -30,6 +30,39 @@ export default function ContactForm({ details }: ContactFormProps) {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileWidgetId = useRef<string | null>(null);
+  
+  // Initialize Turnstile when component mounts
+  useEffect(() => {
+    // Load the Turnstile script
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    
+    // Render Turnstile when the script is loaded
+    script.onload = () => {
+      if (window.turnstile) {
+        turnstileWidgetId.current = window.turnstile.render('#turnstile-container', {
+          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '',
+          callback: (token: string) => {
+            setTurnstileToken(token);
+          },
+        });
+      }
+    };
+    
+    // Clean up
+    return () => {
+      if (window.turnstile && turnstileWidgetId.current) {
+        window.turnstile.remove(turnstileWidgetId.current);
+      }
+      document.body.removeChild(script);
+    };
+  }, []);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -39,13 +72,41 @@ export default function ContactForm({ details }: ContactFormProps) {
     }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Check if Turnstile token exists
+      if (!turnstileToken) {
+        throw new Error('Please wait for the human verification to complete');
+      }
+      
+      // Reset Turnstile for next submission
+      if (window.turnstile && turnstileWidgetId.current) {
+        window.turnstile.reset(turnstileWidgetId.current);
+      }
+      
+      // Send form data to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken,
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+      
+      // Success
       setIsSubmitted(true);
       setFormData({
         name: '',
@@ -53,7 +114,11 @@ export default function ContactForm({ details }: ContactFormProps) {
         phone: '',
         message: ''
       });
-    }, 1500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -61,10 +126,18 @@ export default function ContactForm({ details }: ContactFormProps) {
       <div className="bg-white p-8 rounded-xl shadow-lg">
         <h3 className="text-2xl font-bold text-green-800 mb-6">Send Us a Message</h3>
         
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg mb-6">
+            <h4 className="font-bold mb-1">Error</h4>
+            <p>{error}</p>
+          </div>
+        )}
+        
         {isSubmitted ? (
           <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded-lg">
             <h4 className="text-xl font-bold mb-2">Thank you for your message!</h4>
-            <p>We have received your inquiry and will get back to you as soon as possible.</p>
+            <p className="mb-4">We have received your inquiry and will get back to you as soon as possible.</p>
+            <p className="text-sm text-gray-600">This form will reset when you reload the page.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -118,6 +191,8 @@ export default function ContactForm({ details }: ContactFormProps) {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
               ></textarea>
             </div>
+            
+            <div id="turnstile-container" className="mb-6"></div>
             
             <button
               type="submit"
