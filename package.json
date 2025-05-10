@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
+    "@sendgrid/mail": "^8.1.5",
     "@tailwindcss/typography": "^0.5.16",
     "framer-motion": "^12.10.5",
     "gray-matter": "^4.0.3",

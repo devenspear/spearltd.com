@@ -1,17 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
-
-// Create a transporter using environment variables
-// You'll need to set these in your .env.local file
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_SERVER || 'smtp.example.com',
-  port: Number(process.env.EMAIL_PORT) || 587,
-  secure: process.env.EMAIL_SECURE === 'true',
-  auth: {
-    user: process.env.EMAIL_USER || '',
-    pass: process.env.EMAIL_PASSWORD || '',
-  },
-});
+import sgMail from '@sendgrid/mail';
 
 export async function POST(request: NextRequest) {
   try {
@@ -52,10 +40,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Set SendGrid API key
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
+    
     // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_FROM || 'contact@spearltd.com',
-      to: process.env.EMAIL_TO || 'recipient@spearltd.com',
+    const msg = {
+      to: process.env.EMAIL_TO || 'doug@spearltd.com',
+      from: process.env.EMAIL_FROM || 'contact@spearltd.com', // Verified sender required
       subject: `New Contact Form Submission from ${name}`,
       text: `
         Name: ${name}
@@ -76,7 +67,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Send the email
-    await transporter.sendMail(mailOptions);
+    await sgMail.send(msg);
 
     // Return success response
     return NextResponse.json({ success: true });
