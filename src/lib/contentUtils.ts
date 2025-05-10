@@ -133,6 +133,9 @@ export interface ProjectsRecentContent {
   _schema: string;
   projects_2022: ProjectItem[];
   projects_2021: ProjectItem[];
+  projects_2020: ProjectItem[];
+  projects_2019: ProjectItem[];
+  projects_2018: ProjectItem[];
   additional_info: string;
   button_text: string;
   button_url: string;

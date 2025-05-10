@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getProcessContent } from '@/lib/contentUtils';
 
 export default async function OurProcessPage() {
@@ -17,7 +18,17 @@ export default async function OurProcessPage() {
             </p>
           ))}
           
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">{funding.heading}</h2>
+          <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
+            <h2 className="text-3xl font-bold text-blue-900">{funding.heading}</h2>
+            <div className="relative w-32 h-20">
+              <Image 
+                src="/images/usdalogo.png" 
+                alt="USDA Logo" 
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+          </div>
           
           {funding.text.split('\n\n').map((paragraph, idx) => (
             <p key={idx} className="text-lg mb-6">

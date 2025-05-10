@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAboutContent } from '@/lib/contentUtils';
 
 export default async function AboutPage() {
@@ -11,9 +12,24 @@ export default async function AboutPage() {
         <h1 className="text-4xl md:text-5xl font-bold text-green-800 mb-8">{intro.heading}</h1>
         
         <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
-          <p className="text-lg mb-6">
-            {intro.text}
-          </p>
+          <div className="flex flex-col md:flex-row gap-8 mb-8">
+            <div className="md:w-1/3">
+              <div className="relative rounded-lg overflow-hidden shadow-md">
+                <Image 
+                  src="/images/Doug_b2.jpg" 
+                  alt="Doug Spear" 
+                  width={300}
+                  height={400}
+                  className="w-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="md:w-2/3">
+              <p className="text-lg mb-6">
+                {intro.text}
+              </p>
+            </div>
+          </div>
           
           <h2 className="text-3xl font-bold text-blue-900 mb-4">{main.heading}</h2>
           

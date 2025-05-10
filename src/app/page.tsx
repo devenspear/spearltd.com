@@ -59,107 +59,19 @@ export default async function Home() {
               />
             </div>
             
-            {/* Decorative elements */}
-            <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-green-200 rounded-full opacity-70"></div>
-            <div className="absolute -top-6 -left-6 w-16 h-16 bg-blue-200 rounded-full opacity-70"></div>
+
           </div>
         </div>
       </div>
 
-      <div className="relative py-16 mb-20">
-        {/* Background with subtle pattern */}
-        <div className="absolute inset-0 bg-gray-50 z-0">
-          <div className="absolute inset-0 opacity-5" 
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23000000' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-            }}>
-          </div>
-        </div>
-        
-        {/* Content */}
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto px-4">
-          <div className="order-2 md:order-1">
-            <div className="bg-white p-1 rounded-xl shadow-xl">
-              <div className="relative h-80 md:h-96 rounded-lg overflow-hidden">
-                <ImageSlider 
-                  images={[
-                    "/images/Slider2.png",
-                    "/images/Slider3.png",
-                    "/images/Slider1.png"
-                  ]}
-                  interval={6000}
-                  className="h-full"
-                />
-              </div>
-            </div>
-          </div>
-          
-          <div className="order-1 md:order-2">
-            {/* About Section */}
-            <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-lg mb-20">
-              <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                  <div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6">{about.heading}</h2>
-                    <div className="text-lg text-gray-700 mb-8 leading-relaxed">
-                      {about.text.split('\n\n').map((paragraph: string, idx: number) => (
-                        <p key={idx} className="text-gray-700 mb-6 leading-relaxed">{paragraph}</p>
-                      ))}
-                    </div>
-                    <div className="inline-block">
-                      <Link 
-                        href={about.button_url} 
-                        className="bg-green-800 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 inline-flex items-center"
-                      >
-                        <span>{about.button_text}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                  
-                  <div className="relative">
-                    <div className="absolute -inset-2 bg-gradient-to-br from-green-100 to-blue-100 rounded-xl blur-md opacity-70"></div>
-                    <div className="relative bg-white p-8 rounded-xl border border-gray-200 shadow-xl">
-                      <div className="text-4xl font-bold text-green-800 mb-4">50+ Years</div>
-                      <div className="text-xl text-gray-700 mb-6">{about.highlight}</div>
-                      <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <div className="font-medium">Proven Track Record</div>
-                          <div className="text-sm text-gray-500">Hundreds of successful projects</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       <div className="text-center mb-20">
         <h2 className="text-4xl font-bold text-green-800 mb-4">{services.heading}</h2>
         <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
           {services.subheading}
         </p>
-        <div className="flex justify-center items-center mb-8">
-          <div className="relative w-40 h-28 mx-auto">
-            <Image 
-              src="/images/usdalogo.png" 
-              alt="USDA Logo" 
-              fill
-              style={{ objectFit: 'contain' }}
-              className="mx-auto"
-            />
-          </div>
-        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.services.map((service, index: number) => (
             <div key={index} className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-t-4 border-${service.color} transform hover:-translate-y-2 transition-transform duration-300`}>
