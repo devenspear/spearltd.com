@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiMail, FiMessageSquare } from 'react-icons/fi';
+import { FiMenu, FiX, FiMessageSquare } from 'react-icons/fi';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

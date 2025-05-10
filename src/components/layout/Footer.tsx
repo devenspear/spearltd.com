@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FiMessageSquare, FiMapPin } from 'react-icons/fi';
+import { FiMapPin } from 'react-icons/fi';
 import EmailObfuscator from '@/components/EmailObfuscator';
 
 const Footer = () => {

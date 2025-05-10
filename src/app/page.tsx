@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getHomeContent } from "@/lib/contentUtils";
 import ImageSlider from "@/components/ImageSlider";
 
 export default async function Home() {
-  const { hero, about, services, cta } = await getHomeContent();
+  const { hero, services, cta } = await getHomeContent();
   
   return (
     <div className="container mx-auto px-4">
