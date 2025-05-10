@@ -24,7 +24,7 @@ export default function ContactForm({ details }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    source: '',
     message: ''
   });
   
@@ -111,7 +111,7 @@ export default function ContactForm({ details }: ContactFormProps) {
       setFormData({
         name: '',
         email: '',
-        phone: '',
+        source: '',
         message: ''
       });
     } catch (err) {
@@ -122,8 +122,8 @@ export default function ContactForm({ details }: ContactFormProps) {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-      <div className="bg-white p-8 rounded-xl shadow-lg">
+    <div id="contact-form" className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 px-4 sm:px-6 md:px-0">
+      <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
         <h3 className="text-2xl font-bold text-green-800 mb-6">Send Us a Message</h3>
         
         {error && (
@@ -168,12 +168,12 @@ export default function ContactForm({ details }: ContactFormProps) {
             </div>
             
             <div>
-              <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Phone</label>
+              <label htmlFor="source" className="block text-gray-700 font-medium mb-2">How did you hear about us?</label>
               <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
+                type="text"
+                id="source"
+                name="source"
+                value={formData.source}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
               />
@@ -215,7 +215,7 @@ export default function ContactForm({ details }: ContactFormProps) {
         )}
       </div>
       
-      <div>
+      <div className="mt-8 md:mt-0">
         <h3 className="text-2xl font-bold text-green-800 mb-6">{details.heading}</h3>
         
         <div className="space-y-8">
@@ -223,7 +223,7 @@ export default function ContactForm({ details }: ContactFormProps) {
             <h4 className="text-lg font-semibold text-gray-800 mb-2">{details.phone.label}</h4>
             <a href={details.phone.url} className="text-xl text-green-700 hover:text-green-800 transition-colors font-medium flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
               {details.phone.number}
             </a>

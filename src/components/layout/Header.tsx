@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiPhone } from 'react-icons/fi';
+import { FiMenu, FiX, FiMail, FiMessageSquare } from 'react-icons/fi';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +53,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-4">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -65,13 +65,20 @@ const Header = () => {
               {item.name}
             </Link>
           ))}
-          <a 
-            href="tel:9194175192" 
+          <Link 
+            href="/contact" 
             className="flex items-center text-sm font-medium text-white bg-primary px-4 py-2 rounded hover:bg-primary-light transition-colors"
           >
-            <FiPhone className="mr-2" />
-            (919) 417-5192
-          </a>
+            <FiMessageSquare className="mr-2" />
+            Contact Us
+          </Link>
+          <Link 
+            href="mailto:info@spearltd.com" 
+            className="flex items-center text-sm font-medium text-green-700 border border-green-700 px-4 py-2 rounded hover:bg-green-50 transition-colors"
+          >
+            <FiMail className="mr-2" />
+            Email Us
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -106,13 +113,20 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <a 
-                href="tel:9194175192" 
-                className="flex items-center justify-center text-base font-medium text-white bg-primary px-4 py-2 rounded hover:bg-primary-light transition-colors"
+              <Link 
+                href="/contact" 
+                className="flex items-center justify-center text-base font-medium text-white bg-primary px-4 py-2 rounded hover:bg-primary-light transition-colors mb-2"
               >
-                <FiPhone className="mr-2" />
-                (919) 417-5192
-              </a>
+                <FiMessageSquare className="mr-2" />
+                Contact Us
+              </Link>
+              <Link 
+                href="mailto:info@spearltd.com" 
+                className="flex items-center justify-center text-base font-medium text-green-700 border border-green-700 px-4 py-2 rounded hover:bg-green-50 transition-colors"
+              >
+                <FiMail className="mr-2" />
+                Email Us
+              </Link>
             </div>
           </motion.div>
         )}

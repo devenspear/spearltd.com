@@ -2,11 +2,11 @@
 _schema: contact_details
 heading: Contact Information
 phone:
-  label: Phone
-  number: (919) 417-5192
-  url: tel:9194175192
+  label: Contact Us
+  number: Contact Form
+  url: #contact-form
 email:
-  label: Email
+  label: Email Us
   address: info@spearltd.com
   url: mailto:info@spearltd.com
 service_area_heading: Our Service Area

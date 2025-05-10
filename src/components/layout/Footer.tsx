@@ -1,22 +1,22 @@
 import Link from 'next/link';
-import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
+import { FiMessageSquare, FiMail, FiMapPin } from 'react-icons/fi';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
     <footer className="bg-secondary text-white">
-      <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container-custom py-12 px-4 sm:px-6 lg:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-serif font-bold text-white mb-4">Spear Consultants</h3>
             <p className="text-gray-300 mb-4">Experts in public funding and evaluations since 1972.</p>
             <div className="flex items-center mb-2">
-              <FiPhone className="mr-2 text-accent" />
-              <a href="tel:9194175192" className="text-gray-300 hover:text-white transition-colors">
-                (919) 417-5192
-              </a>
+              <FiMessageSquare className="mr-2 text-accent" />
+              <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
+                Contact Us
+              </Link>
             </div>
             <div className="flex items-center mb-2">
               <FiMail className="mr-2 text-accent" />
