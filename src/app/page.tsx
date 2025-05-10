@@ -8,12 +8,13 @@ export default async function Home() {
   return (
     <div className="container mx-auto px-4">
       {/* Hero Section with Background */}
-      <div className="relative h-[550px] flex items-center justify-center mb-20 overflow-hidden rounded-xl shadow-2xl">
+      <div className="relative min-h-[550px] flex items-center justify-center mb-20 overflow-hidden rounded-xl shadow-2xl">
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-green-800 to-blue-900 opacity-90"></div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto px-4">
-          <div className="relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center max-w-6xl mx-auto px-4 py-10">
+          {/* Content section that changes order on mobile */}
+          <div className="relative z-10 order-2 md:order-1 mt-6 md:mt-0">
             <div className="inline-block px-4 py-1 bg-white text-green-800 rounded-full text-sm font-medium mb-6">
               {hero.badge_text}
             </div>
@@ -45,7 +46,8 @@ export default async function Home() {
             </div>
           </div>
           
-          <div className="relative">
+          {/* Image slider that changes order on mobile */}
+          <div className="relative order-1 md:order-2">
             <div className="absolute -inset-4 bg-gradient-to-tr from-green-100 to-blue-100 rounded-2xl blur-lg opacity-60"></div>
             <div className="relative bg-white p-2 rounded-2xl shadow-2xl">
               <ImageSlider 
@@ -57,8 +59,6 @@ export default async function Home() {
                 className="aspect-[4/3] rounded-xl overflow-hidden w-full h-auto"
               />
             </div>
-            
-
           </div>
         </div>
       </div>
