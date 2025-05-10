@@ -72,9 +72,27 @@ export async function POST(request: NextRequest) {
     // Return success response
     return NextResponse.json({ success: true });
   } catch (error) {
+    // Enhanced error logging
     console.error('Error sending email:', error);
+    
+    // Get more detailed error information
+    let errorMessage = 'Failed to send email';
+    if (error instanceof Error) {
+      errorMessage = `${errorMessage}: ${error.message}`;
+      console.error('Error details:', error.stack);
+    }
+    
+    // Check if it's a SendGrid API error
+    if (error && typeof error === 'object' && 'response' in error) {
+      const sendGridError = error as { response?: { body?: unknown } };
+      if (sendGridError.response?.body) {
+        console.error('SendGrid API error:', sendGridError.response.body);
+        errorMessage = `SendGrid API error: ${JSON.stringify(sendGridError.response.body)}`;
+      }
+    }
+    
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: errorMessage },
       { status: 500 }
     );
   }
