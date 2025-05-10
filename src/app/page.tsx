@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getHomeContent } from "@/lib/contentUtils";
-import type { ServiceItem } from "@/lib/contentUtils";
 
 export default async function Home() {
   const { hero, about, services, cta } = await getHomeContent();
