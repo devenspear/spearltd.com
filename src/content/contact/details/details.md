@@ -11,7 +11,5 @@ email:
   url: mailto:info@spearltd.com
 service_area_heading: Our Service Area
 service_area_text: |
-  Spear Consultants has completed projects all across the United States. We specialize in public funding and evaluations for golf courses and other income-producing properties.
-  
-  Contact us today to discuss how we can help with your specific project, regardless of location.
+  Spear Consultants has completed projects all across the USA. For more information send a message below.
 ---
