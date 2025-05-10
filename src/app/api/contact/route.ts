@@ -44,30 +44,34 @@ export async function POST(request: NextRequest) {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
     
     // Email content
-    const msg = {
-      to: process.env.EMAIL_TO || 'doug@spearltd.com',
-      from: process.env.EMAIL_FROM || 'contact@spearltd.com', // Verified sender required
-      subject: `New Contact Form Submission from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        How they heard about us: ${source || 'Not provided'}
-        
-        Message:
-        ${message}
-      `,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>How they heard about us:</strong> ${source || 'Not provided'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    };
+    const emailText = `
+      Name: ${name}
+      Email: ${email}
+      How they heard about us: ${source || 'Not provided'}
+      
+      Message:
+      ${message}
+    `;
+    const emailHtml = `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>How they heard about us:</strong> ${source || 'Not provided'}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message.replace(/\n/g, '<br>')}</p>
+    `;
 
-    // Send the email
-    await sgMail.send(msg);
+    // Send email using SendGrid
+    await sgMail.send({
+      to: process.env.EMAIL_TO || 'doug@spearltd.com',
+      from: {
+        email: process.env.EMAIL_FROM || 'contact@spearltd.com',
+        name: 'Spear Consultants'
+      },
+      subject: `New contact form submission from ${name}`,
+      text: emailText,
+      html: emailHtml,
+    });
 
     // Return success response
     return NextResponse.json({ success: true });
