@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FiMessageSquare, FiMail, FiMapPin } from 'react-icons/fi';
+import { FiMessageSquare, FiMapPin } from 'react-icons/fi';
+import EmailObfuscator from '@/components/EmailObfuscator';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,10 +15,10 @@ const Footer = () => {
             <p className="text-gray-300 mb-4">Experts in public funding and evaluations since 1972.</p>
 
             <div className="flex items-center mb-2">
-              <FiMail className="mr-2 text-accent" />
-              <a href="mailto:info@spearltd.com" className="text-gray-300 hover:text-white transition-colors">
-                info@spearltd.com
-              </a>
+              <EmailObfuscator 
+                className="text-gray-300 hover:text-white transition-colors flex items-center" 
+                linkText="info@spearltd.com" 
+              />
             </div>
             <div className="flex items-start">
               <FiMapPin className="mr-2 mt-1 text-accent" />

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import EmailObfuscator from '@/components/EmailObfuscator';
 
 interface ContactFormProps {
   details: {
@@ -223,12 +224,11 @@ export default function ContactForm({ details }: ContactFormProps) {
           
           <div>
             <h4 className="text-lg font-semibold text-gray-800 mb-2">{details.email.label}</h4>
-            <a href={details.email.url} className="text-xl text-green-700 hover:text-green-800 transition-colors font-medium flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              {details.email.address}
-            </a>
+            <EmailObfuscator
+              className="text-xl text-green-700 hover:text-green-800 transition-colors font-medium flex items-center"
+              linkText={details.email.address}
+              showIcon={true}
+            />
           </div>
           
           <div>
