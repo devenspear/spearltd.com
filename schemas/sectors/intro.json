@@ -1,0 +1,21 @@
+{
+  "title": "Sectors Intro",
+  "_id": "sectors_intro",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "_schema": {
+      "type": "string",
+      "default": "sectors_intro"
+    },
+    "heading": {
+      "type": "string",
+      "title": "Heading"
+    },
+    "text": {
+      "type": "string",
+      "title": "Introductory Text",
+      "_inputType": "textarea"
+    }
+  }
+}

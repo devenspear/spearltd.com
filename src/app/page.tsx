@@ -8,20 +8,20 @@ export default async function Home() {
   return (
     <div className="container mx-auto px-4">
       {/* Hero Section with Background */}
-      <div className="relative min-h-[550px] flex items-center justify-center mb-20 overflow-hidden rounded-xl shadow-2xl">
+      <div className="relative min-h-[650px] flex items-center justify-center mb-20 overflow-hidden rounded-xl shadow-2xl">
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-green-800 to-blue-900 opacity-90"></div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center max-w-6xl mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto px-4 py-10">
           {/* Content section that changes order on mobile */}
           <div className="relative z-10 order-2 md:order-1 mt-6 md:mt-0">
-            <div className="inline-block px-4 py-1 bg-white text-green-800 rounded-full text-sm font-medium mb-6">
+            <div className="inline-block px-4 py-1 bg-white text-green-800 rounded-full text-sm font-medium mb-4">
               {hero.badge_text}
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
               {hero.heading}
             </h1>
-            <p className="text-xl text-white text-opacity-90 mb-8 leading-relaxed">
+            <p className="text-lg text-white text-opacity-90 mb-6 leading-relaxed">
               {hero.subheading}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -46,24 +46,80 @@ export default async function Home() {
             </div>
           </div>
           
-          {/* Image slider that changes order on mobile */}
+          {/* Image section that changes order on mobile */}
           <div className="relative order-1 md:order-2">
             <div className="absolute -inset-4 bg-gradient-to-tr from-green-100 to-blue-100 rounded-2xl blur-lg opacity-60"></div>
             <div className="relative bg-white p-2 rounded-2xl shadow-2xl">
-              <ImageSlider 
-                images={[
-                  "/images/Slider1.png",
-                  "/images/Slider2.png",
-                  "/images/Slider3.png"
-                ]}
-                className="aspect-[4/3] rounded-xl overflow-hidden w-full h-auto"
-              />
+              <div className="w-full h-[400px] rounded-xl overflow-hidden">
+                <ImageSlider 
+                  images={[
+                    "/images/hero/NewHead1.jpg",
+                    "/images/hero/NewHead2.jpg",
+                    "/images/hero/NewHead3.jpg",
+                    "/images/hero/NewHead4.jpg",
+                    "/images/hero/golf-clubhouse.jpg"
+                  ]}
+                  className="w-full h-full"
+                  interval={5000}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-
+      {/* Key Numbers Section */}
+      <div className="py-16 mb-20 bg-white rounded-xl shadow-lg">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">Our Impact By The Numbers</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {/* Years of Experience */}
+            <div className="p-6 transform transition-transform hover:scale-105">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-800 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div className="text-5xl font-bold text-blue-900 mb-2">50+</div>
+              <div className="text-xl font-medium text-gray-700">Years of Experience</div>
+            </div>
+            
+            {/* Projects Funded */}
+            <div className="p-6 transform transition-transform hover:scale-105">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-800 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="text-5xl font-bold text-blue-900 mb-2">630+</div>
+              <div className="text-xl font-medium text-gray-700">Projects Funded</div>
+            </div>
+            
+            {/* Capital Secured */}
+            <div className="p-6 transform transition-transform hover:scale-105">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-800 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="text-5xl font-bold text-blue-900 mb-2">$2B+</div>
+              <div className="text-xl font-medium text-gray-700">Capital Secured</div>
+            </div>
+            
+            {/* Nationwide Service */}
+            <div className="p-6 transform transition-transform hover:scale-105">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-800 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="text-5xl font-bold text-blue-900 mb-2">50</div>
+              <div className="text-xl font-medium text-gray-700">States Served</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="text-center mb-20">
         <h2 className="text-4xl font-bold text-green-800 mb-4">{services.heading}</h2>

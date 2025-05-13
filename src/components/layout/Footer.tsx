@@ -60,12 +60,12 @@ const Footer = () => {
             <h3 className="text-xl font-serif font-bold text-white mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/articles/what-is-a-feasibility-report" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/feasibility-reports" className="text-gray-300 hover:text-white transition-colors">
                   What is a Feasibility Report?
                 </Link>
               </li>
               <li>
-                <Link href="/articles/typical-procedure-for-usda-funding" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/funding-solutions/usda-loans" className="text-gray-300 hover:text-white transition-colors">
                   USDA Funding Procedure
                 </Link>
               </li>

@@ -118,8 +118,14 @@ export interface ProcessPageContent {
 }
 
 export interface ProjectItem {
-  name: string;
+  title: string;
   location: string;
+  year: string;
+  challenge: string;
+  solution: string;
+  outcome: string;
+  type: string;
+  image: string;
 }
 
 export interface ProjectsIntroContent {
@@ -131,11 +137,10 @@ export interface ProjectsIntroContent {
 
 export interface ProjectsRecentContent {
   _schema: string;
-  projects_2022: ProjectItem[];
-  projects_2021: ProjectItem[];
-  projects_2020: ProjectItem[];
-  projects_2019: ProjectItem[];
-  projects_2018: ProjectItem[];
+  projects: ProjectItem[];
+  project_types: string[];
+  years: string[];
+  confidentiality_note: string;
   additional_info: string;
   button_text: string;
   button_url: string;
@@ -179,6 +184,124 @@ export interface ContactDetailsContent {
 export interface ContactPageContent {
   intro: ContactIntroContent;
   details: ContactDetailsContent;
+}
+
+export interface SectorItem {
+  title: string;
+  description: string;
+  examples: string;
+  icon: string;
+  color: string;
+  button_text: string;
+  button_url: string;
+}
+
+export interface SectorsIntroContent {
+  _schema: string;
+  heading: string;
+  text: string;
+  content?: string;
+}
+
+export interface SectorsListContent {
+  _schema: string;
+  sectors: SectorItem[];
+  cta_text: string;
+  cta_button_text: string;
+  cta_button_url: string;
+  content?: string;
+}
+
+export interface SectorsPageContent {
+  intro: SectorsIntroContent;
+  sectorsList: SectorsListContent;
+}
+
+// Funding Solutions Interfaces
+export interface FundingIntroContent {
+  _schema: string;
+  heading: string;
+  text: string;
+  cta_text: string;
+  cta_url: string;
+  content?: string;
+}
+
+export interface LoanProgram {
+  title: string;
+  purpose: string;
+  benefits: string[];
+  eligibility: string[];
+  spear_role: string[];
+}
+
+export interface USDALoansContent {
+  _schema: string;
+  heading: string;
+  intro_text: string;
+  cf_program: LoanProgram;
+  bi_program: LoanProgram;
+  cta_text: string;
+  cta_url: string;
+  content?: string;
+}
+
+export interface SBALoansContent {
+  _schema: string;
+  heading: string;
+  intro_text: string;
+  seven_a_program: LoanProgram;
+  cta_text: string;
+  cta_url: string;
+  content?: string;
+}
+
+export interface ComparisonTableContent {
+  _schema: string;
+  heading: string;
+  features: {
+    name: string;
+    usda_cf: string;
+    usda_bi: string;
+    sba_7a: string;
+  }[];
+  content?: string;
+}
+
+export interface FundingPageContent {
+  intro: FundingIntroContent;
+  comparison: ComparisonTableContent;
+}
+
+export interface USDAPageContent {
+  usda: USDALoansContent;
+}
+
+export interface SBAPageContent {
+  sba: SBALoansContent;
+}
+
+// Feasibility Reports Interfaces
+export interface FeasibilityContent {
+  _schema: string;
+  heading: string;
+  intro_text: string;
+  what_is: string;
+  why_essential: {
+    title: string;
+    points: string[];
+  };
+  approach: {
+    title: string;
+    points: string[];
+  };
+  cta_text: string;
+  cta_url: string;
+  content?: string;
+}
+
+export interface FeasibilityPageContent {
+  feasibility: FeasibilityContent;
 }
 
 // Function to get content from markdown files
@@ -269,5 +392,54 @@ export async function getContactContent(): Promise<ContactPageContent> {
   return {
     intro: introContent,
     details: detailsContent
+  };
+}
+
+// Sectors page content
+export async function getSectorsContent(): Promise<SectorsPageContent> {
+  const introContent = await getContentData<SectorsIntroContent>('src/content/sectors/intro/intro.md');
+  const sectorsListContent = await getContentData<SectorsListContent>('src/content/sectors/list/sectors.md');
+  
+  return {
+    intro: introContent,
+    sectorsList: sectorsListContent
+  };
+}
+
+// Funding Solutions page content
+export async function getFundingContent(): Promise<FundingPageContent> {
+  const introContent = await getContentData<FundingIntroContent>('src/content/funding/intro/intro.md');
+  const comparisonContent = await getContentData<ComparisonTableContent>('src/content/funding/intro/comparison.md');
+  
+  return {
+    intro: introContent,
+    comparison: comparisonContent
+  };
+}
+
+// USDA Loans page content
+export async function getUSDAContent(): Promise<USDAPageContent> {
+  const usdaContent = await getContentData<USDALoansContent>('src/content/funding/usda/usda.md');
+  
+  return {
+    usda: usdaContent
+  };
+}
+
+// SBA Loans page content
+export async function getSBAContent(): Promise<SBAPageContent> {
+  const sbaContent = await getContentData<SBALoansContent>('src/content/funding/sba/sba.md');
+  
+  return {
+    sba: sbaContent
+  };
+}
+
+// Feasibility Reports page content
+export async function getFeasibilityContent(): Promise<FeasibilityPageContent> {
+  const feasibilityContent = await getContentData<FeasibilityContent>('src/content/feasibility/feasibility.md');
+  
+  return {
+    feasibility: feasibilityContent
   };
 }

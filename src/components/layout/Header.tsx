@@ -33,6 +33,9 @@ const Header = () => {
 
   const navItems = [
     { name: 'About Us', href: '/about' },
+    { name: 'Sectors We Serve', href: '/sectors-we-serve' },
+    { name: 'Funding Solutions', href: '/funding-solutions' },
+    { name: 'Feasibility Reports', href: '/feasibility-reports' },
     { name: 'Our Process', href: '/our-process' },
     { name: 'Recent Projects', href: '/recent-projects' },
   ];

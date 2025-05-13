@@ -2,5 +2,5 @@
 _schema: about_intro
 heading: About Us
 text: |
-  An Evaluation determines financial viability and answers the question – is it feasible to buy or build a facility in a given area. Lenders and Bankers want an "outside opinion" from a third party, and our reports do exactly that.
+  For over five decades, Spear Consultants has been the trusted partner for organizations seeking expert financial guidance and funding solutions. Our comprehensive Evaluations determine financial viability and answer the critical question – is it feasible to buy or build a facility in a given area? Lenders and bankers require an "outside opinion" from a credible third party, and our reports deliver exactly that level of professional insight and analysis that leads to funding success.
 ---

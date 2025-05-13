@@ -2,9 +2,17 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAboutContent } from '@/lib/contentUtils';
+import { remark } from 'remark';
+import html from 'remark-html';
 
 export default async function AboutPage() {
   const { intro, main } = await getAboutContent();
+  
+  // Convert markdown to HTML for the additional_text section
+  const processedContent = await remark()
+    .use(html)
+    .process(main.additional_text);
+  const contentHtml = processedContent.toString();
   
   return (
     <div className="container mx-auto px-4 py-12">
@@ -45,11 +53,10 @@ export default async function AboutPage() {
             </p>
           </div>
           
-          {main.additional_text.split('\n\n').map((paragraph, idx) => (
-            <p key={idx} className="text-lg mb-6">
-              {paragraph}
-            </p>
-          ))}
+          <div 
+            className="prose prose-lg max-w-none prose-headings:text-blue-900 prose-headings:font-bold prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-blue-900"
+            dangerouslySetInnerHTML={{ __html: contentHtml }} 
+          />
         </div>
         
         <div className="flex justify-center">

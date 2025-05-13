@@ -1,0 +1,70 @@
+{
+  "title": "Sectors List",
+  "_id": "sectors_list",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "_schema": {
+      "type": "string",
+      "default": "sectors_list"
+    },
+    "sectors": {
+      "type": "array",
+      "title": "Sectors",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Sector Title"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "_inputType": "textarea"
+          },
+          "examples": {
+            "type": "string",
+            "title": "Examples"
+          },
+          "icon": {
+            "type": "string",
+            "title": "Icon",
+            "enum": ["golf", "community", "hospitality", "commercial"],
+            "options": {
+              "enum_titles": ["Golf", "Community", "Hospitality", "Commercial"]
+            }
+          },
+          "color": {
+            "type": "string",
+            "title": "Color",
+            "enum": ["green-800", "blue-800", "teal-700", "indigo-700"],
+            "options": {
+              "enum_titles": ["Green", "Blue", "Teal", "Indigo"]
+            }
+          },
+          "button_text": {
+            "type": "string",
+            "title": "Button Text"
+          },
+          "button_url": {
+            "type": "string",
+            "title": "Button URL"
+          }
+        }
+      }
+    },
+    "cta_text": {
+      "type": "string",
+      "title": "CTA Text"
+    },
+    "cta_button_text": {
+      "type": "string",
+      "title": "CTA Button Text"
+    },
+    "cta_button_url": {
+      "type": "string",
+      "title": "CTA Button URL"
+    }
+  }
+}
