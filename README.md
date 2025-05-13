@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SpearLTD Website
+
+This is the official website for Spear Consultants LTD, a consulting firm specializing in funding solutions and feasibility reports for various sectors including golf & recreation, healthcare, and community development.
+
+## Project Overview
+
+The SpearLTD website is built with [Next.js](https://nextjs.org) and features:
+
+- Modern, responsive design optimized for all devices
+- Interactive image carousel in the hero section
+- Detailed information about funding solutions (USDA and SBA loans)
+- Comprehensive feasibility report services
+- Sector-specific consulting information
+- Recent projects showcase
+
+## Content Structure
+
+The website is organized into several key sections:
+
+- **Home**: Features a hero carousel and overview of services
+- **Funding Solutions**: Details on USDA and SBA loan programs
+- **Feasibility Reports**: Information about feasibility studies and their importance
+- **Sectors We Serve**: Breakdown of industries served (Golf & Recreation, Healthcare, etc.)
+- **Recent Projects**: Showcase of successfully funded projects
+- **Articles**: Educational content about funding procedures and feasibility reports
+
+## Technical Implementation
+
+- Built with Next.js 15.3.2
+- Uses TypeScript for type safety
+- Content management through structured Markdown files
+- Responsive design with Tailwind CSS
+- Image optimization with Next.js Image component
+- Custom carousel component for the hero section
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content Management
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Content is managed through Markdown files located in the `src/content` directory. The content is organized by section:
+
+- `src/content/home` - Home page content
+- `src/content/funding` - Funding solutions content
+- `src/content/feasibility` - Feasibility reports content
+- `src/content/sectors` - Sectors we serve content
+- `src/content/projects` - Recent projects content
+
+The content is loaded and processed by utility functions in `src/lib/content.ts`.
+
+## Building for Production
+
+To create an optimized production build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run start
+```
+
+## Deployment
+
+The website is configured for deployment on Vercel. Push to the main branch to trigger an automatic deployment.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs)
