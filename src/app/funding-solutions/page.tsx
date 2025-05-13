@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getFundingContent } from '@/lib/contentUtils';
+import { getFundingContent } from '@/lib/content';
 
 export default async function FundingSolutionsPage() {
   const { intro, comparison } = await getFundingContent();

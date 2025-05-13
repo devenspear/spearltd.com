@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getFeasibilityContent } from '@/lib/contentUtils';
+import { getFeasibilityContent } from '@/lib/content';
 
 export default async function WhatIsAFeasibilityReportPage() {
   const { feasibility } = await getFeasibilityContent();

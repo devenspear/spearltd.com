@@ -106,7 +106,7 @@ function ProjectCard({ project }: ProjectCardProps) {
           </div>
           
           <div className="mb-4">
-            <h3 className="text-sm font-semibold text-gray-700 mb-1">Solution & Spear's Role:</h3>
+            <h3 className="text-sm font-semibold text-gray-700 mb-1">Solution & Spear&apos;s Role:</h3>
             <p className="text-gray-600 text-sm">{project.solution}</p>
           </div>
           

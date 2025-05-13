@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface ImageSliderProps {
   images: string[];
@@ -39,9 +40,12 @@ export default function ImageSlider({ images, interval = 5000, className = '' }:
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
         >
-          <img 
+          <Image 
             src={image} 
             alt={`Slide ${index + 1}`} 
+            fill
+            sizes="100vw"
+            priority={index === 0}
             className="w-full h-full object-cover rounded-xl"
           />
         </div>

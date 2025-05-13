@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getUSDAContent } from '@/lib/contentUtils';
+import { getUSDAContent } from '@/lib/content';
 
 export default async function USDAFundingProcedurePage() {
   const { usda } = await getUSDAContent();

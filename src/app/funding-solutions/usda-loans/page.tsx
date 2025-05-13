@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getUSDAContent } from '@/lib/contentUtils';
+import { getUSDAContent } from '@/lib/content';
 
 export default async function USDALoansPage() {
   const { usda } = await getUSDAContent();
@@ -58,7 +58,7 @@ export default async function USDALoansPage() {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-blue-800 mb-2">Spear Consultants' Role</h3>
+              <h3 className="text-lg font-semibold text-blue-800 mb-2">Spear Consultants&apos; Role</h3>
               <ul className="list-disc pl-6 space-y-1">
                 {usda.cf_program.spear_role.map((role, index) => (
                   <li key={index}>{role}</li>
@@ -95,7 +95,7 @@ export default async function USDALoansPage() {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-indigo-800 mb-2">Spear Consultants' Role</h3>
+              <h3 className="text-lg font-semibold text-indigo-800 mb-2">Spear Consultants&apos; Role</h3>
               <ul className="list-disc pl-6 space-y-1">
                 {usda.bi_program.spear_role.map((role, index) => (
                   <li key={index}>{role}</li>

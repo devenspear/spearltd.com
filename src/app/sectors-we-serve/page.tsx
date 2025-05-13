@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getSectorsContent } from '@/lib/contentUtils';
+import { getSectorsContent } from '@/lib/content';
 
 export default async function SectorsPage() {
   const { intro, sectorsList } = await getSectorsContent();

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getSBAContent } from '@/lib/contentUtils';
+import { getSBAContent } from '@/lib/content';
 
 export default async function SBALoansPage() {
   const { sba } = await getSBAContent();
@@ -58,7 +58,7 @@ export default async function SBALoansPage() {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-green-800 mb-2">Spear Consultants' Role</h3>
+              <h3 className="text-lg font-semibold text-green-800 mb-2">Spear Consultants&apos; Role</h3>
               <ul className="list-disc pl-6 space-y-1">
                 {sba.seven_a_program.spear_role.map((role, index) => (
                   <li key={index}>{role}</li>
