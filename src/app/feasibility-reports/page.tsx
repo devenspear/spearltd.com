@@ -72,43 +72,18 @@ export default async function FeasibilityReportsPage() {
             </div>
           </div>
           
-          {/* Why is it Essential */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-blue-900 mb-6">{feasibility.why_essential.title}</h2>
-            <ul className="space-y-4">
-              {feasibility.why_essential.points.map((point, index) => {
-                const [title, description] = point.split(': ');
-                return (
-                  <li key={index} className="bg-gray-50 rounded-lg p-4 shadow-sm">
-                    <h3 className="font-bold text-blue-900 mb-1">{title}:</h3>
-                    <p>{description}</p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          {/* Why is it Essential section removed */}
           
-          {/* The Spear Consultants Approach */}
+          {/* The Spear Consultants Approach - Title Only */}
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-blue-900 mb-6">{feasibility.approach.title}</h2>
-            <ul className="space-y-4">
-              {feasibility.approach.points.map((point, index) => {
-                const [title, description] = point.split(': ');
-                return (
-                  <li key={index} className="bg-gray-50 rounded-lg p-4 shadow-sm">
-                    <h3 className="font-bold text-green-800 mb-1">{title}:</h3>
-                    <p>{description}</p>
-                  </li>
-                );
-              })}
-            </ul>
           </div>
           
           {/* Sample Report Section */}
           <div className="mb-12 bg-blue-50 rounded-xl p-6">
             <h2 className="text-2xl font-bold text-blue-900 mb-4">Our Feasibility Reports Make a Difference</h2>
-            <div className="flex flex-col md:flex-row gap-6 items-center">
-              <div className="md:w-1/2">
+            <div>
+              <div className="w-full">
                 <p className="mb-4">
                   Our reports have helped secure over $2 billion in funding for more than 630 projects across all 50 states. Each report is tailored to the specific project and provides:
                 </p>
@@ -119,21 +94,7 @@ export default async function FeasibilityReportsPage() {
                   <li>Clear recommendations for success</li>
                 </ul>
               </div>
-              <div className="md:w-1/2">
-                <div className="bg-white p-4 rounded-lg shadow-md">
-                  <div className="aspect-w-3 aspect-h-4 relative">
-                    <div className="absolute inset-0 bg-gradient-to-b from-blue-100 to-green-100 flex items-center justify-center">
-                      <div className="text-center p-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto text-blue-800 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <h3 className="text-xl font-bold text-blue-900 mb-2">Sample Report</h3>
-                        <p className="text-gray-700 mb-4">Contact us to see a sample feasibility report tailored to your industry.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Sample report element removed */}
             </div>
           </div>
           
