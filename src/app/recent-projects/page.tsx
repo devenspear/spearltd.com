@@ -87,25 +87,13 @@ export default async function RecentProjectsPage() {
             {intro.text}
           </p>
           
-          {/* Custom CSS for responsive text sizing */}
-          <style jsx>{`
-            @media (max-width: 1200px) and (min-width: 768px) {
-              .project-row {
-                font-size: calc(0.65rem + 0.3vw);
-              }
-            }
-            @media (max-width: 1000px) and (min-width: 768px) {
-              .project-row {
-                font-size: calc(0.6rem + 0.25vw);
-              }
-            }
-          `}</style>
+          {/* Using Tailwind's responsive classes instead of styled-jsx */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Left Column */}
             <div>
               {leftColumnProjects.map((project, index) => (
-                <div key={`left-${index}`} className="mb-1 pb-1 border-b border-gray-100 flex project-row">
+                <div key={`left-${index}`} className="mb-1 pb-1 border-b border-gray-100 flex text-base md:text-sm lg:text-base">
                   <span className="font-semibold text-blue-800 w-16 whitespace-nowrap">{project.year}</span>
                   <span className="text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">{project.name}</span>
                 </div>
@@ -115,7 +103,7 @@ export default async function RecentProjectsPage() {
             {/* Right Column */}
             <div>
               {rightColumnProjects.map((project, index) => (
-                <div key={`right-${index}`} className="mb-1 pb-1 border-b border-gray-100 flex project-row">
+                <div key={`right-${index}`} className="mb-1 pb-1 border-b border-gray-100 flex text-base md:text-sm lg:text-base">
                   <span className="font-semibold text-blue-800 w-16 whitespace-nowrap">{project.year}</span>
                   <span className="text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">{project.name}</span>
                 </div>
