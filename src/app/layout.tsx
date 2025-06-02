@@ -38,7 +38,7 @@ export default function RootLayout({
         <Header />
         
         {/* Fixed height spacer to account for the fixed header */}
-        <div className="h-32"></div>
+        <div className="h-36"></div> {/* Increased height for better spacing */}
         
         {/* Main content */}
         <main className="flex-grow relative">
