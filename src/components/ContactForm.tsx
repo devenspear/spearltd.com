@@ -33,6 +33,7 @@ export default function ContactForm({ details }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileWidgetId = useRef<string | null>(null);
   
@@ -66,18 +67,76 @@ export default function ContactForm({ details }: ContactFormProps) {
     };
   }, []);
   
+  // Validate phone number format
+  const isValidPhoneNumber = (phone: string): boolean => {
+    // Allow empty phone (it's not required)
+    if (!phone) return true;
+    
+    // Remove all non-numeric characters for validation
+    const digitsOnly = phone.replace(/\D/g, '');
+    
+    // US/Canada phone numbers should have 10 digits (or 11 with country code 1)
+    return digitsOnly.length === 10 || (digitsOnly.length === 11 && digitsOnly.startsWith('1'));
+  };
+
+  // Format phone number for display (optional)
+  const formatPhoneNumber = (phone: string): string => {
+    // Keep original input if empty or invalid
+    if (!phone || !isValidPhoneNumber(phone)) return phone;
+    
+    // Remove all non-numeric characters
+    const digitsOnly = phone.replace(/\D/g, '');
+    
+    // Format as (XXX) XXX-XXXX for 10-digit numbers
+    if (digitsOnly.length === 10) {
+      return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3, 6)}-${digitsOnly.slice(6)}`;
+    }
+    
+    // Format as +1 (XXX) XXX-XXXX for 11-digit numbers starting with 1
+    if (digitsOnly.length === 11 && digitsOnly.startsWith('1')) {
+      return `+1 (${digitsOnly.slice(1, 4)}) ${digitsOnly.slice(4, 7)}-${digitsOnly.slice(7)}`;
+    }
+    
+    return phone;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    if (name === 'phone') {
+      // Clear previous phone error
+      setPhoneError(null);
+      
+      // Validate phone number if not empty
+      if (value && !isValidPhoneNumber(value)) {
+        setPhoneError('Please enter a valid 10-digit phone number');
+      }
+      
+      // Update form data with formatted phone number
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    } else {
+      // Handle other form fields normally
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
+    
+    // Validate phone number before submission if provided
+    if (formData.phone && !isValidPhoneNumber(formData.phone)) {
+      setPhoneError('Please enter a valid 10-digit phone number');
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
       // Check if Turnstile token exists
@@ -90,6 +149,12 @@ export default function ContactForm({ details }: ContactFormProps) {
         window.turnstile.reset(turnstileWidgetId.current);
       }
       
+      // Format phone number before sending if it's valid
+      const formDataToSend = {
+        ...formData,
+        phone: formData.phone && isValidPhoneNumber(formData.phone) ? formatPhoneNumber(formData.phone) : formData.phone
+      };
+      
       // Send form data to API
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -97,7 +162,7 @@ export default function ContactForm({ details }: ContactFormProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...formData,
+          ...formDataToSend,
           turnstileToken,
         }),
       });
@@ -178,8 +243,12 @@ export default function ContactForm({ details }: ContactFormProps) {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                placeholder="(123) 456-7890"
+                className={`w-full px-4 py-3 border ${phoneError ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500`}
               />
+              {phoneError && (
+                <p className="text-red-500 text-sm mt-1">{phoneError}</p>
+              )}
             </div>
             
             <div>

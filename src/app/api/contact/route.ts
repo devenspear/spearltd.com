@@ -5,7 +5,10 @@ export async function POST(request: NextRequest) {
   try {
     // Parse the request body
     const body = await request.json();
-    const { name, email, source, message, turnstileToken } = body;
+    const { name, email, phone, source, message, turnstileToken } = body;
+    
+    // Ensure phone is properly handled (not undefined or null)
+    const formattedPhone = phone || 'Not provided';
 
     // Verify Cloudflare Turnstile token
     const turnstileResponse = await fetch(
@@ -47,6 +50,7 @@ export async function POST(request: NextRequest) {
     const emailText = `
       Name: ${name}
       Email: ${email}
+      Phone: ${formattedPhone}
       How they heard about us: ${source || 'Not provided'}
       
       Message:
@@ -56,6 +60,7 @@ export async function POST(request: NextRequest) {
       <h2>New Contact Form Submission</h2>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${formattedPhone}</p>
       <p><strong>How they heard about us:</strong> ${source || 'Not provided'}</p>
       <p><strong>Message:</strong></p>
       <p>${message.replace(/\n/g, '<br>')}</p>

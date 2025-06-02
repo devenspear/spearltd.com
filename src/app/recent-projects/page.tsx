@@ -91,7 +91,7 @@ export default async function RecentProjectsPage() {
             {/* Left Column */}
             <div>
               {leftColumnProjects.map((project, index) => (
-                <div key={`left-${index}`} className="mb-3 pb-3 border-b border-gray-100 flex">
+                <div key={`left-${index}`} className="mb-1 pb-1 border-b border-gray-100 flex">
                   <span className="font-semibold text-blue-800 w-16">{project.year}</span>
                   <span className="text-gray-800">{project.name}</span>
                 </div>
@@ -101,7 +101,7 @@ export default async function RecentProjectsPage() {
             {/* Right Column */}
             <div>
               {rightColumnProjects.map((project, index) => (
-                <div key={`right-${index}`} className="mb-3 pb-3 border-b border-gray-100 flex">
+                <div key={`right-${index}`} className="mb-1 pb-1 border-b border-gray-100 flex">
                   <span className="font-semibold text-blue-800 w-16">{project.year}</span>
                   <span className="text-gray-800">{project.name}</span>
                 </div>
