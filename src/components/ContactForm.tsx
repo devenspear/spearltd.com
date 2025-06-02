@@ -25,6 +25,7 @@ export default function ContactForm({ details }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     source: '',
     message: ''
   });
@@ -112,6 +113,7 @@ export default function ContactForm({ details }: ContactFormProps) {
       setFormData({
         name: '',
         email: '',
+        phone: '',
         source: '',
         message: ''
       });
@@ -164,6 +166,18 @@ export default function ContactForm({ details }: ContactFormProps) {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Phone</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
               />
             </div>
