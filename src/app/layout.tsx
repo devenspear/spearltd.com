@@ -34,8 +34,14 @@ export default function RootLayout({
         <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
       </head>
       <body className="min-h-screen flex flex-col bg-background text-foreground font-sans">
+        {/* Header with fixed position */}
         <Header />
-        <main className="flex-grow pt-20">
+        
+        {/* Fixed height spacer to account for the fixed header */}
+        <div className="h-32"></div>
+        
+        {/* Main content */}
+        <main className="flex-grow relative">
           {children}
         </main>
         <Footer />

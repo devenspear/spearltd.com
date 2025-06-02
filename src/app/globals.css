@@ -9,23 +9,23 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-bold text-secondary;
+    @apply font-sans font-bold text-secondary;
   }
 
   h1 {
-    @apply text-3xl sm:text-4xl md:text-5xl mb-4 md:mb-6;
+    @apply text-4xl sm:text-5xl md:text-6xl mb-4 md:mb-6;
   }
 
   h2 {
-    @apply text-2xl sm:text-3xl md:text-4xl mb-3 md:mb-4 mt-6 md:mt-8;
+    @apply text-3xl sm:text-4xl md:text-5xl mb-3 md:mb-4 mt-6 md:mt-8;
   }
 
   h3 {
-    @apply text-xl sm:text-2xl md:text-3xl mb-2 md:mb-3 mt-4 md:mt-6;
+    @apply text-2xl sm:text-3xl md:text-4xl mb-2 md:mb-3 mt-4 md:mt-6;
   }
 
   p {
-    @apply mb-4 leading-relaxed;
+    @apply mb-4 leading-relaxed text-base md:text-lg;
   }
 
   a {
@@ -43,11 +43,15 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-base md:text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
   }
 
   .btn-primary {
     @apply bg-primary text-white hover:bg-primary-light;
+  }
+  
+  .header-content-separator {
+    @apply w-full h-24 border-b border-gray-200;
   }
   
   .container-custom {

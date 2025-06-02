@@ -43,13 +43,13 @@ const Header = () => {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled ? 'bg-white shadow-md py-3' : 'bg-white py-6'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <span className="text-2xl font-serif font-bold text-primary">
+          <span className="text-3xl md:text-4xl font-serif font-bold text-primary">
             Spear Consultants
           </span>
         </Link>
@@ -60,7 +60,7 @@ const Header = () => {
             <Link
               key={item.name}
               href={item.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-base md:text-lg font-medium transition-colors hover:text-primary ${
                 pathname === item.href ? 'text-primary' : 'text-secondary'
               }`}
             >
@@ -69,7 +69,7 @@ const Header = () => {
           ))}
           <Link 
             href="/contact" 
-            className="flex items-center text-sm font-medium text-white bg-primary px-4 py-2 rounded hover:bg-primary-light transition-colors"
+            className="flex items-center text-base md:text-lg font-medium text-white bg-primary px-4 py-2 rounded hover:bg-primary-light transition-colors"
           >
             <FiMessageSquare className="mr-2" />
             Contact Us
