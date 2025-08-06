@@ -7,27 +7,24 @@ export default async function Home() {
   
   return (
     <div className="container mx-auto px-4">
-      {/* Hero Section with Background */}
-      <div className="relative min-h-[650px] flex items-center justify-center mb-20 overflow-hidden rounded-xl shadow-2xl">
-        {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-green-800 to-blue-900 opacity-90"></div>
-        
+      {/* Hero Section - Clean and Professional */}
+      <div className="relative flex items-center justify-center mb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto px-4 py-10">
-          {/* Content section that changes order on mobile */}
+          {/* Content section - High-contrast text and buttons */}
           <div className="relative z-10 order-2 md:order-1 mt-6 md:mt-0">
-            <div className="inline-block px-4 py-1 bg-white text-green-800 rounded-full text-sm font-medium mb-4">
+            <div className="inline-block bg-primary-light/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4 border border-primary/20">
               {hero.badge_text}
             </div>
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-4 leading-tight">
               {hero.heading}
             </h1>
-            <p className="text-lg text-white text-opacity-90 mb-6 leading-relaxed">
+            <p className="text-lg text-muted mb-6 leading-relaxed max-w-2xl">
               {hero.subheading}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 href={hero.primary_button_url} 
-                className="bg-green-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center"
+                className="btn btn-primary shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <span>{hero.primary_button_text}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -36,7 +33,7 @@ export default async function Home() {
               </Link>
               <Link 
                 href={hero.secondary_button_url} 
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-800 hover:border-green-800 hover:text-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center"
+                className="btn btn-outline shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <span>{hero.secondary_button_text}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -46,11 +43,11 @@ export default async function Home() {
             </div>
           </div>
           
-          {/* Image section that changes order on mobile */}
+          {/* Image section with 4:3 aspect ratio */}
           <div className="relative order-1 md:order-2">
-            <div className="absolute -inset-4 bg-gradient-to-tr from-green-100 to-blue-100 rounded-2xl blur-lg opacity-60"></div>
+            <div className="absolute -inset-4 bg-gradient-to-tr from-primary-light/20 to-secondary/20 rounded-2xl blur-lg opacity-50"></div>
             <div className="relative bg-white p-2 rounded-2xl shadow-2xl">
-              <div className="w-full h-[400px] rounded-xl overflow-hidden">
+              <div className="w-full aspect-[4/3] rounded-xl overflow-hidden">
                 <ImageSlider 
                   images={[
                     "/images/hero/NewHead1.jpg",

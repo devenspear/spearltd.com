@@ -102,11 +102,11 @@ export default async function SectorsPage() {
         </div>
         
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-green-800 to-blue-900 text-white rounded-xl p-8 sm:p-12 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">{sectorsList.cta_text}</h2>
+        <div className="bg-gradient-to-r from-green-800 to-blue-900 rounded-xl p-8 sm:p-12 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">{sectorsList.cta_text}</h2>
           <Link 
             href={sectorsList.cta_button_url} 
-            className="bg-white text-green-800 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center w-full sm:w-auto"
+            className="bg-white text-blue-800 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center w-full sm:w-auto"
           >
             <span>{sectorsList.cta_button_text}</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
