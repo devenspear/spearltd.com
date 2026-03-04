@@ -436,7 +436,7 @@ export function getUSDAContent(): USDAPageContent {
       title: 'Community Facilities Program',
       purpose: 'Provides funding for essential community facilities in rural areas and towns.',
       benefits: [
-        'Low fixed interest rates (2.25% - 3.5%)',
+        'Low fixed interest rates (based on Prime)',
         'Long terms up to 40 years',
         'No balloon payments',
         'No prepayment penalties',
@@ -461,7 +461,7 @@ export function getUSDAContent(): USDAPageContent {
       title: 'Business & Industry Program',
       purpose: 'Provides loan guarantees to businesses in rural areas to improve economic conditions and create jobs.',
       benefits: [
-        'Competitive interest rates (2.5% - 3.75%)',
+        'Low fixed interest rates (based on Prime)',
         'Terms up to 30 years for real estate',
         'Up to 15 years for equipment',
         'Up to 7 years for working capital',
@@ -554,7 +554,7 @@ export interface FeasibilityContent {
   heading: string;
   intro_text: string;
   what_is: string;
-  why_essential: {
+  why_essential?: {
     title: string;
     points: string[];
   };
@@ -576,18 +576,9 @@ export function getFeasibilityContent(): FeasibilityPageContent {
   const feasibilityContent = {
     _schema: 'feasibility_content',
     heading: 'Feasibility Reports',
-    intro_text: 'A cornerstone of our services, feasibility reports are essential for securing funding and ensuring project success. Spear Consultants provides comprehensive feasibility studies tailored to your specific project needs.',
-    what_is: 'A feasibility report is a comprehensive analysis that evaluates a project\'s potential for success. It examines financial, technical, legal, operational, and scheduling aspects to determine if the project is viable and sustainable.',
-    why_essential: {
-      title: 'Why Feasibility Reports Are Essential',
-      points: [
-        'Required by most lenders and funding agencies',
-        'Identifies potential risks and challenges early',
-        'Provides realistic financial projections',
-        'Validates market demand and revenue assumptions',
-        'Serves as a roadmap for project implementation'
-      ]
-    },
+    intro_text: 'Feasibility reports are the foundation of successful project planning and a critical requirement for securing funding. At Spear Consultants, we deliver meticulously researched and professionally prepared feasibility studies customized to meet the unique requirements of your specific project and industry. A feasibility report is an in-depth analytical document that systematically evaluates all aspects of a proposed project to determine its viability. The report thoroughly examines market conditions, technical requirements, financial projections, legal considerations, and operational logistics to provide stakeholders with a clear assessment of risks and potential returns before significant resources are committed.',
+    what_is: '',
+
     approach: {
       title: 'Our Approach to Feasibility Studies',
       points: [

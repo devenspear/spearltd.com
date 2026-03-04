@@ -20,10 +20,6 @@ export default async function WhatIsAFeasibilityReportPage() {
           
           {/* What is a Feasibility Report */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-blue-900 mb-6">Understanding Feasibility Reports</h2>
-            <p className="text-lg mb-6">
-              {feasibility.what_is}
-            </p>
             
             {/* Infographic */}
             <div className="bg-blue-50 rounded-xl p-6 my-8">
@@ -72,21 +68,7 @@ export default async function WhatIsAFeasibilityReportPage() {
             </div>
           </div>
           
-          {/* Why is it Essential */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-blue-900 mb-6">{feasibility.why_essential.title}</h2>
-            <ul className="space-y-4">
-              {feasibility.why_essential.points.map((point, index) => {
-                const [title, description] = point.split(': ');
-                return (
-                  <li key={index} className="bg-gray-50 rounded-lg p-4 shadow-sm">
-                    <h3 className="font-bold text-blue-900 mb-1">{title}:</h3>
-                    <p>{description}</p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+
           
           <div className="text-center mt-12">
             <Link 

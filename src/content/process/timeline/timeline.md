@@ -6,8 +6,8 @@ steps:
   - USDA relationship is with the lender – not consultants
   - USDA considers consultants an independent supportive opinions
   - Assignments normally ends upon introduction of lender to USDA
-  - SCLtd stays involved (up to six months) to assist client with closing
-  - SCLtd is not directly involved in the closing process, but active from the sidelines
+  - Spear Consultants stays involved (up to six weeks) to assist client with closing
+  - Spear Consultants is not directly involved in the closing process, but active from the sidelines
   - Due to confidential nature Spear Consultants is limited in discussing other projects
   - USDA wants to know if projects are in an eligible area
   - Does it have local elected officials' support
@@ -16,8 +16,8 @@ steps:
   - Who are potential Board Members of non-profit
   - USDA attorneys determine if the non-profit (borrower) is eligible
   - USDA needs a bank (local or regional) interested in making a guarantee loan
-  - SCLtd ask USDA for an informal meeting with consultants to introduce our project
-  - SCLtd review draft reports with the client, then prepare final to be shared with others
+  - Spear Consultants ask USDA for an informal meeting with consultants to introduce our project
+  - Spear Consultants review draft reports with the client, then prepare final to be shared with others
   - Are there any conflicts of interest and does the project have community support
   - USDA will ask if consultants have a vested interest or any success fees
   - Is there a Confidentially Agreement

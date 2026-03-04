@@ -68,39 +68,39 @@ export default async function USDAFundingProcedurePage() {
           
           {/* Typical USDA Funding Procedure */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-blue-900 mb-6">Typical USDA Funding Procedure</h2>
+            <h2 className="text-3xl font-bold text-blue-900 mb-3">Typical USDA Funding Procedure</h2>
             
-            <div className="relative border-l-4 border-blue-800 pl-8 py-4 mb-8">
+            <div className="relative border-l-4 border-blue-800 pl-8 py-2 mb-4">
               <div className="absolute w-4 h-4 bg-blue-800 rounded-full -left-2 top-0"></div>
               <h3 className="text-xl font-bold text-blue-900 mb-2">Step 1: Initial Consultation</h3>
               <p>Meet with Spear Consultants to discuss your project and determine eligibility for USDA funding programs.</p>
             </div>
             
-            <div className="relative border-l-4 border-blue-800 pl-8 py-4 mb-8">
+            <div className="relative border-l-4 border-blue-800 pl-8 py-2 mb-4">
               <div className="absolute w-4 h-4 bg-blue-800 rounded-full -left-2 top-0"></div>
               <h3 className="text-xl font-bold text-blue-900 mb-2">Step 2: Feasibility Study</h3>
               <p>Complete a comprehensive feasibility study to demonstrate project viability and financial sustainability.</p>
             </div>
             
-            <div className="relative border-l-4 border-blue-800 pl-8 py-4 mb-8">
+            <div className="relative border-l-4 border-blue-800 pl-8 py-2 mb-4">
               <div className="absolute w-4 h-4 bg-blue-800 rounded-full -left-2 top-0"></div>
               <h3 className="text-xl font-bold text-blue-900 mb-2">Step 3: Application Preparation</h3>
               <p>Prepare and submit the USDA loan application with all required documentation and supporting materials.</p>
             </div>
             
-            <div className="relative border-l-4 border-blue-800 pl-8 py-4 mb-8">
+            <div className="relative border-l-4 border-blue-800 pl-8 py-2 mb-4">
               <div className="absolute w-4 h-4 bg-blue-800 rounded-full -left-2 top-0"></div>
               <h3 className="text-xl font-bold text-blue-900 mb-2">Step 4: USDA Review</h3>
               <p>USDA reviews the application, conducts site visits, and performs due diligence on the project.</p>
             </div>
             
-            <div className="relative border-l-4 border-blue-800 pl-8 py-4 mb-8">
+            <div className="relative border-l-4 border-blue-800 pl-8 py-2 mb-4">
               <div className="absolute w-4 h-4 bg-blue-800 rounded-full -left-2 top-0"></div>
               <h3 className="text-xl font-bold text-blue-900 mb-2">Step 5: Funding Approval</h3>
               <p>Upon approval, USDA issues a Letter of Conditions outlining the terms of the loan.</p>
             </div>
             
-            <div className="relative border-l-4 border-blue-800 pl-8 py-4 mb-8">
+            <div className="relative border-l-4 border-blue-800 pl-8 py-2 mb-4">
               <div className="absolute w-4 h-4 bg-blue-800 rounded-full -left-2 top-0"></div>
               <h3 className="text-xl font-bold text-blue-900 mb-2">Step 6: Closing and Disbursement</h3>
               <p>Complete closing requirements and begin receiving funds for your project.</p>

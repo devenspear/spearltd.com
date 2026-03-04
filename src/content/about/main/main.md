@@ -4,14 +4,14 @@ heading: Over 50 years and over 630 Successfully Funded Projects
 text: |
   Spear Consultants specializes in "public funding" loans which offer lower rates and longer terms. We prepare comprehensive Feasibility Reports that outline present and future opportunities to determine financial viability for diverse projects including golf courses, community facilities, hospitality ventures, and more. Our independent approach adds credence and credibility to our clients' efforts, potential investors, and lenders.
 
-  We assist clients with both conventional loans and public funding solutions. Public funding options are government-guaranteed loans that require no or limited equity from borrower(s). These are long-term loans (25 to 40 years) at low interest rates (prime + 1) and do not require personal guarantees. With a public funding loan, the government takes away personal guarantees from the lender and replaces it with a government guarantee up to 90%. Equity requirements are typically 20% of the loan, depending on which program is used.
+  We assist clients with both conventional loans and public funding solutions. Public funding options are government-guaranteed loans that require no or limited equity from borrower(s). These are long-term loans (25 to 40 years) at low interest rates (prime + 1) and do not require personal guarantees. With a public funding loan, the government takes away personal guarantees from the lender and replaces it with a government guarantee up to 80%. Equity requirements are typically 20% of the loan, depending on which program is used.
 
-  Our principal, Doug Spear, brings insights gained from 20 years at Wachovia Bank, offering an invaluable lender's perspective that strengthens our clients' funding applications.
+  Our principal, Doug Spear, brings insights gained from 20 years at Wachovia Bank (Wells Fargo today), offering an invaluable lender's perspective that strengthens our clients' funding applications.
 quote: "Every project whether buying, selling, marketing, funding with investors or financing with loans can benefit from an Evaluation to determine present and future values."
 additional_text: |
   ## Our Principal: Doug Spear - A Legacy of Financial Expertise and Golf Passion
 
-  Doug Spear, the founder of Spear Consultants, has dedicated over 50 years to mastering the intricacies of project financing. His journey began with a significant 20-year tenure at Wachovia Bank, where he developed a profound understanding of lending criteria and financial structuring. This banking background forms a cornerstone of our firm's ability to prepare compelling, successful funding applications.
+  Doug Spear, the founder of Spear Consultants, has dedicated over 50 years to mastering the intricacies of project financing. His journey began with a significant 20-year tenure at Wachovia Bank (Wells Fargo today), where he developed a profound understanding of lending criteria and financial structuring. This banking background forms a cornerstone of our firm's ability to prepare compelling, successful funding applications.
 
   Beyond his financial acumen, Doug is a dedicated Golf Educator, with extensive industry knowledge and connections. His insights into golf operations provide a unique, holistic perspective for our golf-related projects, blending financial strategy with a deep love for the game. This distinctive combination of financial expertise and industry-specific knowledge sets Spear Consultants apart.
 
