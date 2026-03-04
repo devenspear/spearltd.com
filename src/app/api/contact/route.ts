@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import sgMail from '@sendgrid/mail';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
     // Parse the request body
     const body = await request.json();
     const { name, email, phone, source, message, turnstileToken } = body;
-    
+
     // Ensure phone is properly handled (not undefined or null)
     const formattedPhone = phone || 'Not provided';
 
@@ -30,7 +32,7 @@ export async function POST(request: NextRequest) {
     // If Turnstile verification fails
     if (!turnstileData.success) {
       return NextResponse.json(
-        { error: 'Human verification failed', details: turnstileData },
+        { error: 'Human verification failed' },
         { status: 400 }
       );
     }
@@ -43,19 +45,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Set SendGrid API key
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
-    
     // Email content
-    const emailText = `
-      Name: ${name}
-      Email: ${email}
-      Phone: ${formattedPhone}
-      How they heard about us: ${source || 'Not provided'}
-      
-      Message:
-      ${message}
-    `;
     const emailHtml = `
       <h2>New Contact Form Submission</h2>
       <p><strong>Name:</strong> ${name}</p>
@@ -66,42 +56,29 @@ export async function POST(request: NextRequest) {
       <p>${message.replace(/\n/g, '<br>')}</p>
     `;
 
-    // Send email using SendGrid
-    await sgMail.send({
-      to: process.env.EMAIL_TO || 'doug@spearltd.com',
-      from: {
-        email: process.env.EMAIL_FROM || 'contact@spearltd.com',
-        name: 'Spear Consultants'
-      },
+    // Send email using Resend
+    const { error } = await resend.emails.send({
+      from: `Spear Consultants <${process.env.EMAIL_FROM || 'contact@spearltd.com'}>`,
+      to: [process.env.EMAIL_TO || 'doug@spearltd.com'],
+      replyTo: email,
       subject: `New contact form submission from ${name}`,
-      text: emailText,
       html: emailHtml,
     });
+
+    if (error) {
+      console.error('Resend API error:', error);
+      return NextResponse.json(
+        { error: 'Failed to send message. Please try again later.' },
+        { status: 500 }
+      );
+    }
 
     // Return success response
     return NextResponse.json({ success: true });
   } catch (error) {
-    // Enhanced error logging
     console.error('Error sending email:', error);
-    
-    // Get more detailed error information
-    let errorMessage = 'Failed to send email';
-    if (error instanceof Error) {
-      errorMessage = `${errorMessage}: ${error.message}`;
-      console.error('Error details:', error.stack);
-    }
-    
-    // Check if it's a SendGrid API error
-    if (error && typeof error === 'object' && 'response' in error) {
-      const sendGridError = error as { response?: { body?: unknown } };
-      if (sendGridError.response?.body) {
-        console.error('SendGrid API error:', sendGridError.response.body);
-        errorMessage = `SendGrid API error: ${JSON.stringify(sendGridError.response.body)}`;
-      }
-    }
-    
     return NextResponse.json(
-      { error: errorMessage },
+      { error: 'Failed to send message. Please try again later.' },
       { status: 500 }
     );
   }
