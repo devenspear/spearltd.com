@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
       from: `Spear Consultants <${process.env.EMAIL_FROM || 'contact@spearltd.com'}>`,
       to: [process.env.EMAIL_TO || 'doug@spearltd.com'],
       replyTo: email,
-      subject: `New contact form submission from ${name}`,
+      subject: `New Contact from Spearltd.com`,
       html: emailHtml,
     });
 
